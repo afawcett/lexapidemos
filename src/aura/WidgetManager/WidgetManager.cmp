@@ -1,0 +1,4 @@
+<aura:component implements="force:lightningQuickAction" >
+    <p/>
+    <img src="{!$Resource.WidgetIcon}" style="display: block; margin-top:auto; margin:bottom:auto; margin-left:auto; margin-right:auto;"/>	
+</aura:component>

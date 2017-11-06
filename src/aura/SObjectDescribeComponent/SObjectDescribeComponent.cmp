@@ -1,0 +1,31 @@
+<aura:component controller="SObjectDescribeController" implements="force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes">
+    <aura:attribute name="fields" type="Object"/>
+    <aura:attribute name="fieldColumns" type="List"/>
+    <aura:attribute name="sobjectName" type="String"/>
+    <aura:attribute name="sobjectLabel" type="String"/>
+    <aura:handler name="init" value="{!this }" action="{! c.init }"/>         
+	<aura:handler name="change" value="{!v.recordId}" action="{!c.onRecordIdChange}"/>
+    <div class="c-container">
+        <lightning:layout >
+            <lightning:layoutItem >
+                <div class="header-column">
+                    <p class="field-title">Record Id</p>
+                    <p>{!v.recordId}</p>
+                </div>
+            </lightning:layoutItem>            
+            <lightning:layoutItem >
+                <div class="header-column">
+                    <p class="field-title">Name</p>
+                    <p>{!v.sobjectName}</p>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem >
+                <div class="header-column">
+                    <p class="field-title">Label</p>
+                    <p>{!v.sobjectLabel}</p>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+    <lightning:datatable data="{! v.fields }" columns="{! v.fieldColumns }" keyField="name" hideCheckboxColumn="true" resizeColumnDisabled="true"/>
+</aura:component>

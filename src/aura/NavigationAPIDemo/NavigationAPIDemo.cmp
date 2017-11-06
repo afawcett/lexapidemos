@@ -1,0 +1,126 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="componentDef_x" type="String" default="c:WidgetTab"/>
+    <aura:attribute name="isredirect" type="Boolean" default="true"/>
+    <aura:attribute name="componentAttributes" type="String" default="{ &quot;message&quot;: &quot;Passed to component&quot;}"/>    
+    <aura:attribute name="listViewId" type="String" default="00BB0000001nPVKMA2"/>
+    <aura:attribute name="listViewName" type="String"/>
+    <aura:attribute name="scope" type="String" default="Widgets__c"/> 
+    <aura:attribute name="parentRecordId" type="String" default="a00B0000005ewy4IAA"/>
+    <aura:attribute name="relatedListId" type="String" default="AttachedContentNotes"/>
+    <aura:attribute name="recordId" type="String" default="a00B0000005ewy4IAA"/>
+    <aura:attribute name="url" type="String" default="http://www.lego.com"/>
+    <aura:attribute name="entityApiName" type="String" default="Widgets__c"/>
+    <aura:attribute name="defaultFieldValues" type="String" default="{ &quot;Cost__c&quot; : 123, &quot;Name&quot; : &quot;Default Name&quot; }"/>
+    <aura:attribute name="recordTypeId" type="String"/>
+    <aura:attribute name="recordIds" type="String" default="069B00000018H7RIAU"/>
+    <lightning:card title="Lightning Navigation API Demo">    
+    <lightning:tabset selectedTabId="one">
+        <lightning:tab label="Record Navigation" id="one">
+            <div class="c-container">    
+                <lightning:layout >
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">force:createRecord</p>
+                            <p>
+                                <lightning:input name="field1" type="text" label="entityApiName " value="{!v.entityApiName}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field2" type="text" label="defaultFieldValues" value="{!v.defaultFieldValues}" class="slds-m-around_medium field"/>                        
+                                <lightning:input name="field2" type="text" label="recordTypeId" value="{!v.recordTypeId}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.createRecord}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">force:editRecord</p>
+                            <p>
+                                <lightning:input name="field2" type="text" label="recordId" value="{!v.recordId}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.editRecord}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>            
+        </lightning:tab>
+        <lightning:tab label="Page Navigation" id="two">
+            <div class="c-container">    
+                <lightning:layout >
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">force:navigateToComponent (Beta)</p>
+                            <p>
+                                <lightning:input name="field1" type="text" label="componentDef" value="{!v.componentDef_x}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field2" type="checkbox" label="isredirect" value="{!v.isredirect}" class="slds-m-around_medium field"/>                        
+                                <lightning:input name="field2" type="text" label="componentAttributes" value="{!v.componentAttributes}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.navigateToComponent}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">force:navigateToList</p>
+                            <p>
+                                <lightning:input name="field3" type="text" label="listViewId" value="{!v.listViewId}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field4" type="text" label="listViewName" value="{!v.listViewName}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field5" type="text" label="scope" value="{!v.scope}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.navigateToList}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">force:navigateToObjectHome</p>
+                            <p>
+                                <lightning:input name="field6" type="text" label="scope" value="{!v.scope}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.navigateToObjectHome}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">force:navigateToRelatedList</p>
+                            <p>
+                                <lightning:input name="field7" type="text" label="parentRecordId" value="{!v.parentRecordId}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field8" type="text" label="relatedListId" value="{!v.relatedListId}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.navigateToRelatedList}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">force:navigateToSObject</p>
+                            <p>
+                                <lightning:input name="field9" type="text" label="recordId" value="{!v.recordId}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.navigateToSObject}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">force:navigateToURL</p>
+                            <p>
+                                <lightning:input name="field11" type="text" label="url" value="{!v.url}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.navigateToUrl}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>
+        </lightning:tab>
+        <lightning:tab label="File Navigation" id="three">
+            <div class="c-container">    
+                <lightning:layout >
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">lightning:openFiles</p>
+                            <p>
+                                <lightning:input name="field1" type="text" label="recordIds " value="{!v.recordIds}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.openFiles}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>            
+        </lightning:tab>        
+        </lightning:tabset>
+    </lightning:card>
+</aura:component>

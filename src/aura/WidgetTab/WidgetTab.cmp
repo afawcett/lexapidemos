@@ -1,0 +1,11 @@
+<aura:component implements="force:appHostable" access="global">
+    <aura:attribute name="message" type="String"/>
+    <lightning:card title="Lightning Tab Demo" iconName="standard:account">
+		<p class="slds-p-horizontal--small">
+            {!v.message}
+        </p>        
+        <div style="padding:100px">
+	        <img src="{!$Resource.WidgetIcon}" style="display: block; margin-left:auto; margin-right:auto;"/>
+        </div>	
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,108 @@
+<aura:component implements="force:appHostable" >
+    <aura:attribute name="header" type="String" default="Your header goes here!"/>
+    <aura:attribute name="body_x" type="String" default="Your body goes here!"/>
+    <aura:attribute name="footer" type="String" default="Your footer goes here!"/>
+    <aura:attribute name="title" type="String" default="Your title goes here!"/>
+    <aura:attribute name="message1" type="String" default="Your title goes message!"/>
+    <aura:attribute name="message2" type="String" default="Error code {0} was returned"/>
+    <aura:attribute name="messageData" type="String" default="[ &quot;401&quot; ]"/>        
+    <aura:attribute name="variant" type="String" default="error"/> 
+    <aura:attribute name="mode" type="String" default="dismissable"/>     
+    <aura:attribute name="showCloseButton" type="Boolean" default="true"/>     
+    <aura:attribute name="cssClass" type="String"/>    
+    <aura:attribute name="cssClass2" type="String" default="popoverclass,cMessagingAPIDemo"/>
+    <aura:attribute name="referenceSelector" type="String" default=".refPopover"/>         
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <lightning:card title="Lightning Messaging API Demo">    
+    <lightning:tabset selectedTabId="one">
+        <lightning:tab label="lightning:notificationsLibrary" id="one">
+            <div class="c-container">    
+                <lightning:layout >
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">Notices</p>
+                            <p>
+                                <lightning:input name="field1" type="text" label="header " value="{!v.header}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field2" type="text" label="title" value="{!v.title}" class="slds-m-around_medium field"/>                        
+                                <lightning:input name="field3" type="text" label="message" value="{!v.message1}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field4" type="text" label="variant" value="{!v.variant}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.showNotice}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">Toast</p>
+                            <p>
+                                <lightning:input name="field6" type="text" label="title" value="{!v.title}" class="slds-m-around_medium field"/>                        
+                                <lightning:input name="field7" type="text" label="message" value="{!v.message2}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field7" type="text" label="messageData" value="{!v.messageData}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field8" type="text" label="variant" value="{!v.variant}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field9" type="text" label="mode" value="{!v.mode}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.showToast}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>            
+        </lightning:tab>
+        <lightning:tab label="lightning:overlayLibrary" id="two">
+            <div class="c-container">    
+                <lightning:layout >
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">Modals</p>
+                            <p>
+                                <lightning:input name="field10" type="text" label="header" value="{!v.header}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field11" type="text" label="body" value="{!v.body_x}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field12" type="text" label="footer" value="{!v.footer}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field13" type="checkbox" label="showCloseButton" checked="{!v.showCloseButton}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field14" type="text" label="cssClass" value="{!v.cssClass}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.showModal}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">Popovers</p>
+                            <p>
+                                <lightning:input name="field15" type="text" label="body" value="{!v.body_x}" class="slds-m-around_medium field"/>
+                                <lightning:input name="field16" type="text" label="referenceSelector" value="{!v.referenceSelector}" class="slds-m-around_medium field"/>                                                                
+                                <lightning:input name="field17" type="text" label="cssClass" value="{!v.cssClass2}" class="slds-m-around_medium field"/>                                
+                                <lightning:button label="Test" class="refPopover" onclick="{!c.showPopover}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>            
+        </lightning:tab>
+        <lightning:tab label="Overlay Advanced Demos" id="two">
+            <div class="c-container">    
+                <lightning:layout >
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">Modals</p>
+                            <p>
+                                <lightning:card variant="Narrow" title="Widget&nbsp; - Bluetooth Dog Feeder&nbsp;" iconName="custom:custom67">
+                                    <aura:set attribute="actions">
+                                        <lightning:buttonIcon iconName="utility:setup" variant="border-filled" alternativeText="Show Fields" onclick="{!c.showModalDemo}"/>
+                                    </aura:set>
+                                </lightning:card>     
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">Popovers</p>
+                            <p onmouseenter="{!c.showPopoverDemo}" class="refPopoverDemo">
+                                <lightning:card variant="Narrow" title="Widget&nbsp; - Bluetooth Dog Feeder&nbsp;" iconName="custom:custom67"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>                        
+        </lightning:tab>        
+        </lightning:tabset>
+    </lightning:card>	
+</aura:component>

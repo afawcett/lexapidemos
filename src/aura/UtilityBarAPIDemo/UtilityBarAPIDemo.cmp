@@ -1,0 +1,171 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="mydata" type="Object"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute name="utilityId" type="String"/>
+    <aura:attribute name="heightPX" type="Integer"/>
+    <aura:attribute name="widthPX" type="Integer"/>
+    <aura:attribute name="sldskey" type="String"/>
+    <aura:attribute name="label" type="String"/>
+    <aura:attribute name="highlighted" type="Boolean"/>
+    <aura:attribute name="enableModalMode" type="Boolean"/>
+    <aura:attribute name="progress" type="Integer" default="0"/>
+    <aura:attribute name="isProgressing" type="Boolean" default="false"/>    
+    <aura:attribute name="progressToggleIcon" type="Boolean" default="false"/>    
+    <aura:attribute name="readNotification" type="Boolean" default="false"/>
+	<aura:attribute name="demoMode" type="Boolean"/>
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    <lightning:utilityBarAPI aura:id="utilitybar"/>
+    <lightning:tabset selectedTabId="one">
+        <lightning:tab label="getAllUtilityInfo()" id="one">
+            <lightning:datatable data="{! v.mydata }" 
+                columns="{! v.mycolumns }" 
+                keyField="id"
+                onrowselection="{! c.getSelectedName }"/>
+            <lightning:buttonGroup class="slds-m-around_medium" >
+                <lightning:button label="Refresh" onclick="{!c.init}"/>
+            </lightning:buttonGroup>
+        </lightning:tab>
+        <lightning:tab label="Panel Methods" id="two">
+            <div class="c-container">
+                <lightning:layout >
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">setPanelHeaderIcon()</p>
+                            <p>
+								<lightning:input type="text" label="utilityId" value="{!v.utilityId}" class="slds-m-around_medium field" disabled="true"/>
+                                <lightning:input type="text" label="sldskey" value="{!v.sldskey}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.setPanelHeaderIcon}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">setPanelHeaderLabel()</p>
+                            <p>
+								<lightning:input type="text" label="utilityId" value="{!v.utilityId}" class="slds-m-around_medium field" disabled="true"/>
+                                <lightning:input type="text" label="label" value="{!v.label}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.setPanelHeaderLabel}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">setPanelHeight()</p>
+                            <p>
+								<lightning:input type="text" label="utilityId" value="{!v.utilityId}" class="slds-m-around_medium field" disabled="true"/>
+                                <lightning:input type="number" label="heightPX" value="{!v.heightPX}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.setPanelHeight}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">setPanelWidth()</p>
+                            <p>
+								<lightning:input type="text" label="utilityId" value="{!v.utilityId}" class="slds-m-around_medium field" disabled="true"/>
+                                <lightning:input type="number" label="widthPX" value="{!v.widthPX}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.setPanelWidth}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>            
+        </lightning:tab>
+        <lightning:tab label="Utility Methods" id="three">
+            <div class="c-container">
+                <lightning:layout >
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">setUtilityHighlighted()</p>
+                            <p>
+								<lightning:input type="text" label="utilityId" value="{!v.utilityId}" class="slds-m-around_medium field" disabled="true"/>
+                                <lightning:input type="toggle" label="highlighted" checked="{!v.highlighted}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.setUtilityHighlighted}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">setUtilityIcon()</p>
+                            <p>
+								<lightning:input type="text" label="utilityId" value="{!v.utilityId}" class="slds-m-around_medium field" disabled="true"/>
+                                <lightning:input type="text" label="sldskey" value="{!v.sldskey}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.setUtilityIcon}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">setUtilityLabel()</p>
+                            <p>
+								<lightning:input type="text" label="utilityId" value="{!v.utilityId}" class="slds-m-around_medium field" disabled="true"/>
+                                <lightning:input type="text" label="label" value="{!v.label}" class="slds-m-around_medium field"/>
+                                <lightning:button label="Test" onclick="{!c.setUtilityLabel}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>                
+                </lightning:layout>
+            </div>            
+        </lightning:tab>
+        <lightning:tab label="Action Methods" id="four">
+            <div class="c-container">
+                <lightning:layout >
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">minimizeUtility()</p>
+                            <p>
+								<lightning:input type="text" label="utilityId" value="{!v.utilityId}" class="slds-m-around_medium field" disabled="true"/>
+                                <lightning:button label="Test" onclick="{!c.minimizeUtility}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">openUtility()</p>
+                            <p>
+								<lightning:input type="text" label="utilityId" value="{!v.utilityId}" class="slds-m-around_medium field" disabled="true"/>
+                                <lightning:button label="Test" onclick="{!c.openUtility}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">toggleModalMode()</p>
+                            <p>
+								<lightning:input class="slds-m-around_medium field" type="text" label="utilityId" value="{!v.utilityId}" disabled="true"/>
+                                <lightning:input class="slds-m-around_medium field" type="toggle" label="enableModalMode" checked="{!v.enableModalMode}"/>                                
+                                <lightning:button label="Test" onclick="{!c.toggleModalMode}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>            
+        </lightning:tab>        
+        <lightning:tab label="Demos" id="five">
+            <div class="c-container">
+                <lightning:layout >
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">Progress Indicator</p>
+                            <p>
+                                <lightning:button class="slds-m-around_medium" label="{! v.isProgressing ? 'Stop' : 'Start' }" onclick="{!c.demoProgressIndicator}"/>
+                                <lightning:progressBar value="{! v.progress }" size="large" />
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">Notifications</p>
+                            <p>
+                                <lightning:button class="slds-m-around_medium" label="{! v.readNotification ? 'Mark as Read' : 'Wait' }" onclick="{!c.demoNotifications}"/>
+                                <aura:if isTrue="{!v.readNotification}">
+									<ui:message title="Confirmation" severity="info">This is a confirmation message.</ui:message>                                
+                                </aura:if>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>            
+        </lightning:tab>                
+    </lightning:tabset>
+</aura:component>

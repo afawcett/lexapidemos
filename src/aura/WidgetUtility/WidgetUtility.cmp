@@ -1,0 +1,14 @@
+<aura:component controller="WidgetUtilityController" implements="force:hasRecordId,flexipage:availableForAllPageTypes">
+	<img src="{!$Resource.WidgetIcon}" style="display: block; margin-left:auto; margin-right:auto; padding:10px"/>
+    <!-- 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>       
+    <aura:handler event="force:refreshView" action="{!c.onRefreshView}"/>
+    <aura:handler event="force:navigateToSObject" action="{!c.onNavigateToSObject}"/>
+    <aura:handler event="force:navigateToObjectHome" action="{!c.onNavigateToObjectHome}"/>
+    <aura:handler event="force:navigateToURL" action="{!c.onNavigateToURL}"/>
+    <aura:handler event="force:navigateToList" action="{!c.onNavigateToList}"/>
+	<aura:handler name="change" value="{!v.recordId}" action="{!c.onRecordIdChange}"/>
+    <aura:attribute name="messages" type="String[]" access="private" default="[]"/>
+    <force:recordView recordId="{!v.recordId}"/>
+	-->
+</aura:component>

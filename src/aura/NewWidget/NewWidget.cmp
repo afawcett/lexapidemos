@@ -1,0 +1,41 @@
+<aura:component implements="lightning:actionOverride,force:hasRecordId">
+    <aura:attribute name="Name" type="String" default="Bluetooth Toothbrush"/>
+    <aura:attribute name="Cost" type="Integer" default="10"/>    
+    <lightning:card title="New Widget Wizard" iconName="standard:account">
+        <p class="slds-p-horizontal--small slds-p-vertical--small">
+            <lightning:progressIndicator currentStep="1" type="path" variant="base">
+                <lightning:progressStep label="Information" value="1"/>
+                <lightning:progressStep label="Revenue Estimator" value="2"/>
+                <lightning:progressStep label="Overview" value="3"/>
+            </lightning:progressIndicator>	
+            <div id="content-path-1" class="slds-tabs--path__content slds-hide" role="tabpanel" aria-labelledby="tab-path-1">
+                <h2>Item One Content</h2>
+            </div>
+            <div id="content-path-2" class="slds-tabs--path__content slds-hide" role="tabpanel" aria-labelledby="tab-path-2">
+                <h2>Item Two Content</h2>
+            </div>
+            <div id="content-path-3" class="slds-tabs--path__content slds-show" role="tabpanel" aria-labelledby="tab-path-3">
+                <div class="slds-grid slds-grid--align-spread">
+                    <div class="slds-coach__keys slds-size--1-of-2 m--left-x-large">
+                        <div class="slds-grid slds-grid--align-spread">
+                            <h2 class="slds-text-heading--label slds-p-bottom--small">Key Fields This Stage</h2>
+                        </div>
+                        <dl class="coach__list slds-dl--horizontal">
+                            <dt class="slds-coach__item slds-dl--horizontal__label">Name</dt>
+                            <dd class="slds-coach__value slds-dl--horizontal__detail slds-p-vertical--small"><ui:inputText value="{!v.Name}"></ui:inputText></dd>
+                            <dt class="slds-coach__item slds-dl--horizontal__label">Cost</dt>
+                            <dd class="slds-coach__value slds-dl--horizontal__detail"><ui:inputText value="{!v.Cost}"></ui:inputText></dd>
+                        </dl>
+                    </div>
+                    <div class="slds-coach__guidance slds-size--1-of-2 slds-m-left--x-large">
+                        <h2 class="slds-text-heading--label slds-p-bottom--small slds-has-divider--bottom">Guidance for Success</h2>
+                        <div class="slds-text-longform slds-p-top--medium">
+                            <p>Lorem ipsum dolor sit amet, elit semper, sem a dignissim nec nec, velit vestibulum in, consequat est lectus nulla tristique nunc. Dui sapien, rhoncus convallis ante ullamcorper, congue nulla lacinia sed diam aliquet est, lectus at mauris, scelerisque blandit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		    <lightning:button label="Save" onclick="{!c.saveRecord}"/>
+        </p>
+    </lightning:card>
+</aura:component>

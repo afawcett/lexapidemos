@@ -1,0 +1,42 @@
+<aura:component controller="ConsoleAPIDemoController" implements="force:lightningQuickAction,flexipage:availableForAllPageTypes">
+    <aura:attribute name="mydata" type="Object"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+	<aura:handler event="lightning:tabClosed" action="{!c.init}"/>
+	<aura:handler event="lightning:tabCreated" action="{!c.init}"/>    
+	<aura:handler event="lightning:tabReplaced" action="{!c.init}"/>    
+	<aura:handler event="lightning:tabUpdated" action="{!c.init}"/>    
+	<aura:handler event="lightning:tabFocused" action="{!c.init}"/>        
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <lightning:tabset selectedTabId="one">
+        <lightning:tab label="getAllTabInfo()" id="one">
+            <lightning:datatable data="{! v.mydata }" 
+                columns="{! v.mycolumns }" 
+                keyField="id" 
+				hideCheckboxColumn="true"
+				resizeColumnDisabled="true"/>
+        </lightning:tab>
+        <lightning:tab label="Demos" id="two">
+            <div class="c-container">
+                <lightning:layout >
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">Close All Tabs</p>
+                            <p>
+                                <lightning:button label="Test" onclick="{!c.closeAllTabs}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title">Open Top 5 Hot Accounts</p>
+                            <p>
+                                <lightning:button label="Test" onclick="{!c.openRedAccounts}"/>
+                            </p>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>            
+        </lightning:tab>                
+    </lightning:tabset>
+</aura:component>

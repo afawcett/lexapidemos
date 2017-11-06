@@ -21,8 +21,6 @@
     <tab>standard-home</tab>
     <tab>Widgets__c</tab>
     <tab>Widget_Builder</tab>
-    <tab>Warranty__c</tab>
-    <tab>Warranty_Manager</tab>
     <tab>NavigationAPIDemo</tab>
     <tab>Messaging_API_Demo</tab>
     <uiType>Lightning</uiType>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <interviewLabel>DemoFlow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>DemoFlow</label>
+    <processType>Flow</processType>
+    <screens>
+        <name>AllDone</name>
+        <label>AllDone</label>
+        <locationX>315</locationX>
+        <locationY>200</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Done</name>
+            <fieldText>Flows can consist of multiple steps you define and/or those driven by the records in your org.</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+    </screens>
+    <screens>
+        <name>Demo</name>
+        <label>Demo</label>
+        <locationX>319</locationX>
+        <locationY>98</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>AllDone</targetReference>
+        </connector>
+        <fields>
+            <name>DemoText</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;This is the &lt;B&gt;standard Flow component&lt;/B&gt; displaying a Flow built using &lt;B&gt;Visual Flow&lt;/B&gt;. A tool that allows you to create powerful business process automations in a drag drop experience. As you can see below you can also prompt users for input.&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Text</name>
+            <dataType>String</dataType>
+            <fieldText>Text</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Date</name>
+            <dataType>Date</dataType>
+            <fieldText>Date</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Number</name>
+            <dataType>Number</dataType>
+            <fieldText>Number</fieldText>
+            <fieldType>InputField</fieldType>
+            <helpText>Some help text!</helpText>
+            <isRequired>false</isRequired>
+            <scale>2</scale>
+        </fields>
+        <fields>
+            <name>Checkbox</name>
+            <dataType>Boolean</dataType>
+            <fieldText>Checkbox</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+    </screens>
+    <startElementReference>Demo</startElementReference>
+</Flow>

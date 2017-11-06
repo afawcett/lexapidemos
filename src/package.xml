@@ -46,6 +46,10 @@
         <name>FlexiPage</name>
     </types>
     <types>
+        <members>DemoFlow-1</members>
+        <name>Flow</name>
+    </types>
+    <types>
         <members>Widgets__c-Widget Layout</members>
         <name>Layout</name>
     </types>

@@ -3,7 +3,6 @@
     <types>
         <members>ConsoleAPIDemoController</members>
         <members>SObjectDescribeController</members>
-        <members>WidgetUtilityController</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -49,6 +48,13 @@
     <types>
         <members>Widgets__c-Widget Layout</members>
         <name>Layout</name>
+    </types>
+    <types>
+        <members>Console_API_Demo</members>
+        <members>Widget_Manager</members>
+        <members>Widgets__c.CombineWithAnother</members>
+        <members>Widgets__c.WidgetManager</members>
+        <name>QuickAction</name>
     </types>
     <version>41.0</version>
 </Package>
